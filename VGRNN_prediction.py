@@ -441,28 +441,21 @@ def mask_edges_prd_new(adjs_list, adj_orig_dense_list):
 
 # loading data
 
-# # Enron dataset
-# with open('data/enron10/adj_time_list.pickle', 'rb') as handle:
+# Enron dataset
+with open('data/enron10/adj_time_list.pickle', 'rb') as handle:
+    handle=handle.decode('utf-8')
+    adj_time_list = pickle.load(handle,encoding='latin1')
+
+with open('data/enron10/adj_orig_dense_list.pickle', 'rb') as handle:
+    adj_orig_dense_list = pickle.load(handle,encoding='latin1')
+
+
+# # Facebook dataset
+# with open('data/fb/adj_time_list.pickle', 'rb') as handle:
 #     adj_time_list = pickle.load(handle)
 
-# with open('data/enron10/adj_orig_dense_list.pickle', 'rb') as handle:
+# with open('data/fb/adj_orig_dense_list.pickle', 'rb') as handle:
 #     adj_orig_dense_list = pickle.load(handle)
-
-
-# # COLAB dataset
-# with open('data/dblp/adj_time_list.pickle', 'rb') as handle:
-#     adj_time_list = pickle.load(handle)
-
-# with open('data/dblp/adj_orig_dense_list.pickle', 'rb') as handle:
-#     adj_orig_dense_list = pickle.load(handle)
-
-
-# Facebook dataset
-with open('data/fb/adj_time_list.pickle', 'rb') as handle:
-    adj_time_list = pickle.load(handle, encoding='latin1')
-
-with open('data/fb/adj_orig_dense_list.pickle', 'rb') as handle:
-    adj_orig_dense_list = pickle.load(handle, encoding='latin1')
 
 
 # In[6]:
