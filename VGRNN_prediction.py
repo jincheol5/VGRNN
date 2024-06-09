@@ -10,6 +10,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import io
+
 import math
 import numpy as np
 import torch
@@ -447,7 +449,8 @@ with open('data/enron10/adj_time_list.pickle', 'rb') as handle:
 
 with open('data/enron10/adj_orig_dense_list.pickle', 'rb') as handle:
     content = handle.read()
-    adj_orig_dense_list = pickle.load(content,encoding='latin1')
+    content_file = io.BytesIO(content)
+    adj_orig_dense_list = pickle.load(content_file,encoding='latin1')
 
 
 # # Facebook dataset
