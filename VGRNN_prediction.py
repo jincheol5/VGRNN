@@ -443,10 +443,10 @@ def mask_edges_prd_new(adjs_list, adj_orig_dense_list):
 
 # Enron dataset
 with open('data/enron10/adj_time_list.pickle', 'rb') as handle:
-    handle=handle.decode('utf-8')
     adj_time_list = pickle.load(handle,encoding='latin1')
 
 with open('data/enron10/adj_orig_dense_list.pickle', 'rb') as handle:
+    handle=handle.decode('utf-8')
     adj_orig_dense_list = pickle.load(handle,encoding='latin1')
 
 
