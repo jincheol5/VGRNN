@@ -450,7 +450,7 @@ with open('data/enron10/adj_time_list.pickle', 'rb') as handle:
 with open('data/enron10/adj_orig_dense_list.pickle', 'rb') as handle:
     content = handle.read()
     content_file = io.BytesIO(content)
-    adj_orig_dense_list = pickle.load(content_file,encoding='latin1')
+    adj_orig_dense_list = pickle.load(content_file)
 
 
 # # Facebook dataset
