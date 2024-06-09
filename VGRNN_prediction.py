@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 from torch.distributions.uniform import Uniform
 from torch.distributions.normal import Normal
-from sklearn.datasets import fetch_mldata
+from sklearn.datasets import fetch_openml
 # from torch_geometric import nn as tgnn
 from input_data import load_data
 from preprocessing import preprocess_graph, construct_feed_dict, sparse_to_tuple, mask_test_edges
@@ -552,7 +552,7 @@ class GCNConv(MessagePassing):
 
     def __repr__(self):
         return '{}({}, {})'.format(self.__class__.__name__, self.in_channels,
-                                   self.out_channels)
+                                self.out_channels)
 
 
 class SAGEConv(torch.nn.Module):
@@ -921,7 +921,7 @@ class VGRNN(nn.Module):
     def reset_parameters(self, stdv=1e-1):
         for weight in self.parameters():
             weight.data.normal_(0, stdv)
-     
+    
     def _init_weights(self, stdv):
         pass
     
@@ -950,9 +950,9 @@ class VGRNN(nn.Module):
         posw = float(temp_size * temp_size - temp_sum) / temp_sum
         norm = temp_size * temp_size / float((temp_size * temp_size - temp_sum) * 2)
         nll_loss_mat = F.binary_cross_entropy_with_logits(input=logits
-                                                          , target=target_adj_dense
-                                                          , pos_weight=posw
-                                                          , reduction='none')
+                                                        , target=target_adj_dense
+                                                        , pos_weight=posw
+                                                        , reduction='none')
         nll_loss = -1 * norm * torch.mean(nll_loss_mat, dim=[0,1])
         return - nll_loss
     
@@ -1020,9 +1020,9 @@ for k in range(1000):
     
     if k>tst_after:
         _, _, enc_means, pri_means, _ = model(x_in[seq_end:seq_len]
-                                              , edge_idx_list[seq_end:seq_len]
-                                              , adj_orig_dense_list[seq_end:seq_len]
-                                              , hidden_st)
+                                            , edge_idx_list[seq_end:seq_len]
+                                            , adj_orig_dense_list[seq_end:seq_len]
+                                            , hidden_st)
         
         auc_scores_prd, ap_scores_prd = get_roc_scores(pos_edges_l[seq_end:seq_len]
                                                         , false_edges_l[seq_end:seq_len]
